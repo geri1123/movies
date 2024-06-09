@@ -1,0 +1,22 @@
+.Moviefavourites{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+   margin: 30px 100px 100px 100px;
+   row-gap: 40px;
+}
+.cartitem{
+   min-height: 100vh;
+   margin-top: 40px;
+}  
+.items{
+   margin: 0px;
+}
+.cartitem h1{
+   font-weight: 500;
+   font-family: 'Poppins';
+}
+.genre{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}

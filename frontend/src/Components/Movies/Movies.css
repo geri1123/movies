@@ -1,0 +1,40 @@
+.movies{
+    
+    display: grid;
+     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
+    
+  row-gap: 30px;
+  /* overflow-x: hidden;
+  overflow-y: hidden; */
+ 
+}
+.moviehomepage{
+    margin:  0px 100px;
+   
+    
+   
+}
+
+.Moviescategory{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Poppins;
+   margin: 0px 0px 10px 5px;
+}
+.Moviescategory h1{
+    font-size: 20px;
+    
+    
+    
+}
+.Moviescategory .imdb{
+    display: flex;
+   
+    
+}
+.imdb p{
+    padding: 0 20px 0;
+    font-size: 18px;
+    font-weight: 100;
+}
