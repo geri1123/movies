@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
-
-import { useRef, useEffect } from 'react';
+import { MdArrowDropDown } from "react-icons/md";
+import { GiCalendarHalfYear } from "react-icons/gi";
+import { useRef, useEffect , useState} from 'react';
 import { Link } from 'react-router-dom'
 import { GrFavorite } from "react-icons/gr";
 import { FaRegCircle } from "react-icons/fa6";
@@ -8,20 +9,25 @@ import { BiMoviePlay } from "react-icons/bi";
 import { BiCameraMovie } from "react-icons/bi";
 import { BiAlignJustify } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
-
+import Dropdown from './dropdown';
+import Dropdownyear from './Dropdownyear';
 import './navbar.css';
 import { MoviesContext } from '../../Context/MovieContext';
 const Navbar = () => {
-  const {getTotalCartItem}=useContext(MoviesContext)
+  const {getTotalCartItem}=useContext(MoviesContext);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [dropdownVisibleyear, setDropdownVisibleyear] = useState(false);
     const navref =useRef();
     const menuref=useRef();
     const shownavbar=()=>{
         navref.current.classList.toggle('responsiblenav');
         menuref.current.classList.toggle('responsiblenav')
+
     }
     const remove=()=>{
         navref.current.classList.remove('responsiblenav');
         menuref.current.classList.remove('responsiblenav');
+        setDropdownVisible(false);
     }
     useEffect(() => {
         const handleOutsideClick = (event) => {
@@ -37,6 +43,9 @@ const Navbar = () => {
         };
     }, []);
 
+
+
+  
   return (
     <div>
       <div className="navbar">
@@ -52,14 +61,31 @@ const Navbar = () => {
             <AiOutlineClose />
       </button>
                 <li><Link to="/">Movies  <BiMoviePlay style={{marginLeft:"5px"}}/></Link></li>
-                <li><Link>Serials  <BiCameraMovie style={{marginLeft:"5px"}}/> </Link></li>
-                <li><Link>Zhanre  <FaRegCircle style={{marginLeft:"5px"}}/></Link></li>
-                <li><Link to='/favourites'>Favourites  <GrFavorite style={{marginLeft:"5px"}} /></Link><span>{getTotalCartItem()}</span></li>
+                <li><Link >Serials  <BiCameraMovie style={{marginLeft:"5px"}}/> </Link></li>
+                <li>
+                  <Link to="#" onClick={() => setDropdownVisible(!dropdownVisible)}>
+                    
+                  <MdArrowDropDown />
+                     Zhanre 
+                    
+                 <FaRegCircle style={{marginLeft:"5px"}}/></Link> 
+                
+                
+                  
+           {dropdownVisible && <Dropdown  />}</li>
+           <li><Link to="#"  onClick={() => setDropdownVisibleyear(!dropdownVisibleyear)}>
+           <MdArrowDropDown />
+           Year 
+           <GiCalendarHalfYear style={{marginLeft:"5px"}} />
+           </Link>
+           {dropdownVisibleyear && <Dropdownyear/>}
+           </li>
+                <li><Link  to='/favourites'>Favourites  <GrFavorite style={{marginLeft:"5px"}} /></Link><span>{getTotalCartItem()}</span></li>
             </ul>
         </div>
         <div className="search">
-            <input type="text" placeholder='Search...'/>
-            <button>Search</button>
+            <input type="text"  placeholder='Search...'/>
+            <button >Search</button>
         </div>
       </div>
     </div>

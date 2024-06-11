@@ -119,3 +119,6 @@ border-radius: 10px ;
     border: none;
     border:1px solid skyblue ;
 }
+.genredisplay a{
+    text-decoration: none;
+}

@@ -4,7 +4,7 @@ import Items from '../Items/Items';
 import './Movies.css'
 
 const Movies = () => {
-     const{allProduct}=useContext(MoviesContext);
+     const{allProduct , loading}=useContext(MoviesContext);
     
 
   return (
@@ -22,10 +22,11 @@ const Movies = () => {
 
 
 
-      <div className="movies">
+      <div className="movies" >
+        {loading && <div>Loading...</div>}
 
         {allProduct.map((movie , i)=>{
-        return  <Items key={i} id={movie.id} posterUrl={movie.posterUrl} title={movie.title} year={movie.year} genres={movie.genres} actors={movie.actors} plot={movie.plot} runtime={movie.runtime} />
+        return  <Items  key={i} id={movie.id} posterUrl={movie.posterUrl} title={movie.title} year={movie.year} genres={movie.genres} actors={movie.actors} plot={movie.plot} runtime={movie.runtime} />
   }
 
         )}

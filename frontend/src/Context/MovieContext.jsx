@@ -8,6 +8,10 @@ import { createContext } from "react";
 export  const MoviesContext = createContext(); 
 
   const getDefaultCart=()=>{
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+      return JSON.parse(savedCart);
+    }
        let cart={};
        for(let index=0 ; index<300+1 ; index++){
          cart[index]=0;
@@ -18,26 +22,46 @@ export  const MoviesContext = createContext();
 
   const MoviesContextProvider = (props) => {
     
-    
+    const [loading , setLoading]=useState(true)
     const [allProduct , setAllProduct]=useState([]);
     const [CartItem , setCartItem]=useState(getDefaultCart());
     useEffect(() =>{
         fetch('http://localhost:8000/movies')
         .then((res)=>res.json())
-        .then((data)=>{setAllProduct(data)})
+        .then((data)=>{
+          setAllProduct(data);
+          setLoading(false);
+        })
     }, []);
 
-    
+    const saveCartToLocalStorage = (cart) => {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    };
+    // const AddToCart = (itemId) => {
+      
+    //     setCartItem((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    //     console.log(CartItem);
+      
+    // };
+    // const RemoveFromCart=(itemId)=>{
+    //   setCartItem((prev)=>({...prev , [itemId]:prev[itemId]-1}))
+     
+    // };
     const AddToCart = (itemId) => {
-      
-        setCartItem((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-        console.log(CartItem);
-      
+      setCartItem((prev) => {
+        const newCart = { ...prev, [itemId]: prev[itemId] + 1 };
+        saveCartToLocalStorage(newCart);
+        return newCart;
+      });
     };
-    const RemoveFromCart=(itemId)=>{
-      setCartItem((prev)=>({...prev , [itemId]:prev[itemId]-1}))
+  
+    const RemoveFromCart = (itemId) => {
+      setCartItem((prev) => {
+        const newCart = { ...prev, [itemId]: prev[itemId] - 1 };
+        saveCartToLocalStorage(newCart);
+        return newCart;
+      });
     };
-
    
     
     const getTotalCartItem=()=>{
@@ -51,7 +75,7 @@ export  const MoviesContext = createContext();
         }return totalItem;
     }
 
-    const contextvalue={allProduct , RemoveFromCart  ,CartItem ,getTotalCartItem , AddToCart};
+    const contextvalue={loading , allProduct , RemoveFromCart  ,CartItem ,getTotalCartItem , AddToCart};
     return (
       <MoviesContext.Provider value={contextvalue}>
         {props.children}

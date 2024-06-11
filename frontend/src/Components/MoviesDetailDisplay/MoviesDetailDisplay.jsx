@@ -2,12 +2,16 @@ import React, { useContext } from 'react'
 import './MoviesDetailDisplay.css'
 import { MoviesContext } from '../../Context/MovieContext';
 import { FiYoutube } from "react-icons/fi";
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 const MoviesDetailDisplay = (props) => {
    const {product}=props;
    const {AddToCart , RemoveFromCart , CartItem}=useContext(MoviesContext);
    const isAlreadyInCart=CartItem[product.id]>0
+   if (!product) {
+    return null; // or a loading/error message
+}
   return (
-<div className='moviedetaildisplay'  onClick={window.scrollTo(0,0)}>
+<div className='moviedetaildisplay'  >
       
       <div className="detailimg">
       <img src={product.posterUrl} alt="" />
@@ -19,7 +23,7 @@ const MoviesDetailDisplay = (props) => {
             <h1>{product.title}({product.year})</h1>
             <div className="genredisplay">
               {product.genres.map((genre , i)=>(
-                <h2 key={i}>{genre}</h2>
+               <Link to={`/genre/${genre}`}> <h2 key={i}>{genre}</h2></Link>
                 ))}
             </div>
             <h3>{product.actors}</h3>

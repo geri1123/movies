@@ -14,11 +14,3 @@ body {
   box-sizing: border-box;
   
 }
-body{
-  background: linear-gradient(180deg, rgba(9, 44, 65, 0.8) 0%, rgba(13, 37, 37, 0.2) 60%), url('./Assets/back.webp');
-  background-size:  cover;
-
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-height: auto;
-}

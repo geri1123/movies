@@ -1,0 +1,24 @@
+.default{
+    min-height: 80vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.default span{
+    color: red;
+
+}
+.default h1{
+    padding: 20px 20px;
+    font-size: 60px;
+
+}
+.default a{
+    color:aqua;
+    font-size: 25px;
+}
+.default p{
+    font-size: 22px;
+}

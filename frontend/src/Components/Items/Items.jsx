@@ -90,10 +90,10 @@ const Items = (props) => {
  
 
   return (
-    <div className="allitem" ref={itemRef}>
+    <div className="allitem"  ref={itemRef}>
      
       <div className='items' >
-        <Link to={`/MoviesDetail/${props.id}/${props.title}${props.year}`} >
+        <Link  to={`/MoviesDetail/${props.id}/${props.title}${props.year}`} onClick={() => window.scrollTo(0, 0)} >
           
         <img 
           onMouseEnter={showItem} 
@@ -107,7 +107,7 @@ const Items = (props) => {
         </div></Link>
         <div className="genres">
         {props.genres.map((genre, index) => (
-     <p key={index}>{genre}</p>
+    <Link to={`/genre/${genre}`}><p key={index}>{genre}</p></Link> 
   ))}
         </div> 
         

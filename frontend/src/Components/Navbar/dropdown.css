@@ -1,0 +1,29 @@
+.dropdown{
+    
+    position: absolute;
+   z-index: 3;
+   background:rgba(0, 0 ,0, 0.9) ;
+  
+
+}
+.uldropdown{
+    display: grid;
+    grid-template-columns:1fr 1fr ;
+   
+  
+    padding: 20px 5px;
+    
+}
+.uldropdown li{
+font-family:'Poppins' ;
+
+}
+.uldropdown p{
+    font-size: 16px;
+    font-weight:500;
+    padding: 10px 0;
+}
+
+.clicked{
+    display: none;
+}
