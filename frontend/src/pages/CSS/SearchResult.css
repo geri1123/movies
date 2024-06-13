@@ -1,0 +1,10 @@
+.search-results-page{
+    margin: 30px 100px;
+    min-height: 80vh;
+}
+.search-results-page h2{
+    font-size: 20px;
+    font-family: 'Poppins';
+    font-weight: 400;
+    margin-bottom: 20px;
+}

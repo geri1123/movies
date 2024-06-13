@@ -7,7 +7,3 @@ body{
     background-attachment: scroll;
   height: auto;
   }
-.home{
- min-height: 100vh;
- margin: 30px 0px 100px 0px;
-}

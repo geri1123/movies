@@ -37,16 +37,6 @@ export  const MoviesContext = createContext();
     const saveCartToLocalStorage = (cart) => {
       localStorage.setItem('cart', JSON.stringify(cart));
     };
-    // const AddToCart = (itemId) => {
-      
-    //     setCartItem((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    //     console.log(CartItem);
-      
-    // };
-    // const RemoveFromCart=(itemId)=>{
-    //   setCartItem((prev)=>({...prev , [itemId]:prev[itemId]-1}))
-     
-    // };
     const AddToCart = (itemId) => {
       setCartItem((prev) => {
         const newCart = { ...prev, [itemId]: prev[itemId] + 1 };
@@ -62,6 +52,17 @@ export  const MoviesContext = createContext();
         return newCart;
       });
     };
+    // const AddToCart = (itemId) => {
+      
+    //     setCartItem((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    //     console.log(CartItem);
+      
+    // };
+    // const RemoveFromCart=(itemId)=>{
+    //   setCartItem((prev)=>({...prev , [itemId]:prev[itemId]-1}))
+     
+    // };
+   
    
     
     const getTotalCartItem=()=>{

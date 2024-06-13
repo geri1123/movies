@@ -106,35 +106,41 @@ export const dropdownitems=[
     },
 ];
 export const yeardropdownitems=[
-    {
+   {
         id:1,
+        name:"<70",
+        value:1900,
+    },  
+    {
+        id:2,
         name:"70-79",
         value:1970,
     },
     {
-        id:2,
+        id:3,
         name:"80-89",
         value:1980,
     },
     {
-        id:3,
+        id:4,
         name:"90-99",
         value:1990,
     },
     {
-        id:4,
+        id:5,
         name:"2000-2009",
         value:2000,
     },
     {
-        id:5,
+        id:6,
         name:"2010-2019",
         value:2010,
     },
     {
-        id:6,
+        id:7,
         name:"2020",
         value:2020,
     },
+   
 
 ];

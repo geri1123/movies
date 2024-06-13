@@ -13,12 +13,21 @@ import Dropdown from './dropdown';
 import Dropdownyear from './Dropdownyear';
 import './navbar.css';
 import { MoviesContext } from '../../Context/MovieContext';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+
+
 const Navbar = () => {
+  
   const {getTotalCartItem}=useContext(MoviesContext);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [dropdownVisibleyear, setDropdownVisibleyear] = useState(false);
+//for search
+  const [searchQuery , setSearchQuery]=useState('');
+  
+//forsearch
     const navref =useRef();
     const menuref=useRef();
+    const history=useHistory();
     const shownavbar=()=>{
         navref.current.classList.toggle('responsiblenav');
         menuref.current.classList.toggle('responsiblenav')
@@ -44,7 +53,13 @@ const Navbar = () => {
     }, []);
 
 
-
+    const handleSearch = (e) => {
+      e.preventDefault();
+      if (searchQuery.trim()) {
+        history.push(`/search/${searchQuery}`);
+        setSearchQuery('');
+      }
+    }
   
   return (
     <div>
@@ -61,7 +76,7 @@ const Navbar = () => {
             <AiOutlineClose />
       </button>
                 <li><Link to="/">Movies  <BiMoviePlay style={{marginLeft:"5px"}}/></Link></li>
-                <li><Link >Serials  <BiCameraMovie style={{marginLeft:"5px"}}/> </Link></li>
+                <li><Link to="#">Serials  <BiCameraMovie style={{marginLeft:"5px"}}/> </Link></li>
                 <li>
                   <Link to="#" onClick={() => setDropdownVisible(!dropdownVisible)}>
                     
@@ -84,8 +99,18 @@ const Navbar = () => {
             </ul>
         </div>
         <div className="search">
-            <input type="text"  placeholder='Search...'/>
-            <button >Search</button>
+         
+        <form onSubmit={handleSearch}>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder='Search...'
+            />
+            <button>Search</button>
+          </form>
+           
+            
         </div>
       </div>
     </div>

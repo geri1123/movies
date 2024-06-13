@@ -12,18 +12,24 @@ const Year = () => {
   } ,[]);
   
   
-  const yearFilter = allProduct.filter((e) => e.year >= Number(startYear) && e.year < Number(endYear));
+  const yearFilter = allProduct.filter((e) => e.year >= Number(startYear) && e.year <= Number(endYear));
 
 
-  
+   const length=yearFilter.length;
   return (
 
     <div className='year'>
-      {
+       <h5>Ju keni {length} rezultate nga viti {startYear} deri ne {endYear }</h5> 
+    
+      <div className="yearsfilt">
+    {
         yearFilter.map((movie , i)=>{
           return <Items key={i} id={movie.id} posterUrl={movie.posterUrl} title={movie.title} year={movie.year} genres={movie.genres} actors={movie.actors} plot={movie.plot} runtime={movie.runtime} />
         })
+        
+        
       }
+      </div>
 
       
     </div>

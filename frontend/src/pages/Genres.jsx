@@ -14,9 +14,13 @@ const Genres = () => {
         .then((data)=>{setAllProduct(data)})
     } , []);
      const genresfilter=allProduct.filter((prod)=>prod.genres.includes(name));
-    
+    const length=genresfilter.length;
   return (
-    <div className='genress'>
+    <div className='genresFilter'>
+    <h5>Ju keni {length} rezultate nga {name}</h5>
+      <div className="genressfilter">
+
+     
       {  
         genresfilter.map((movie , i)=>{
          
@@ -24,6 +28,7 @@ const Genres = () => {
             return  <Items key={i} id={movie.id} posterUrl={movie.posterUrl} title={movie.title} year={movie.year} genres={movie.genres} actors={movie.actors} plot={movie.plot} runtime={movie.runtime} />
         })
       }
+       </div>
     </div>
   )
 }

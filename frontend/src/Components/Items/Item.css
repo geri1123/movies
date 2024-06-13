@@ -142,6 +142,8 @@
     text-align: start;
    
 }
+
+
 .itemdescr .runtime {
     display: flex;
     justify-content: space-around;
@@ -154,7 +156,7 @@
     align-items: center;
     
 }
-.itemdescr span{
+.itemdescr p span{
     text-align: start;
     color: rgb(52, 160, 255);
 

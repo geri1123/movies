@@ -1,60 +1,15 @@
-// import React, { useRef } from 'react'
-// import './Item.css'
-// const Items = (props) => {
-//   const itemref=useRef();
-  
-//   const showitem=()=>{
-//     itemref.current.classList.toggle("mouseenter");
-    
 
-//   }
-//   const removeitem=()=>{
-//     itemref.current.classList.remove("mouseenter");
-//   }
-
-
-  
-//   return (
-//     <div className="allitem">
-//     <div className='items'  >
-//        <img onMouseEnter={showitem} 
-//             onMouseLeave={removeitem}
-//        src={props.posterUrl} alt="" />
-//        <div className="title">
-//         <h3>{props.title}</h3>
-//         <h3>({props.year})</h3>
-//        </div>
-//        <div className="genres">
-//         <p>{props.genres}</p>
-//        </div>
-//     </div>
-//     <div className="itemdescr" ref={itemref}>
-//       <h4>{props.title}</h4>
-//       <div className="runtime">
-//         <p>{props.year}</p>
-//         <p>{props.runtime}</p>
-        
-        
-//       </div>
-//       <p>{props.plot}</p>
-//       <p>genre:{props.genres}</p>
-//       <p>actors:{props.actors}</p>
-//     </div>
-//     </div>
-    
-//   )
-// }
-
-// export default Items
 import React, {  useRef} from 'react';
+
 import './Item.css';
 // import { MoviesContext } from '../../Context/MovieContext';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 
 // import { FaRegHeart } from "react-icons/fa6";
+
 const Items = (props) => {
 
-  // const {AddToCart ,  CartItem}=useContext(MoviesContext)
+  
   
 
 
@@ -139,7 +94,13 @@ const Items = (props) => {
           <p>{props.runtime} min</p>
         </div>
         <p>{props.plot}</p>
-        <p>Genre: <span>{props.genres}</span></p>
+        <p>Genre:
+        { props.genres.map((genre ,index)=>(
+               <Link to={`/genre/${genre}`} > <span key={index}>  {genre}</span></Link>
+
+     ) )
+        }
+        </p>
         <p>Actors:<span> {props.actors}</span></p>
       </div>
     </div>

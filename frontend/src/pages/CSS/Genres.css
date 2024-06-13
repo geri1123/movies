@@ -1,7 +1,17 @@
-.genress{
+.genresFilter{
+    min-height: 80vh;
+    margin: 30px 100px;
+}
+
+.genressfilter{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-row-gap: 30px;
-    min-height: 80vh;
-    margin: 30px 100px;
+    
+}
+.genresFilter h5{
+    font-family: 'Poppins';
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 20px;
 }

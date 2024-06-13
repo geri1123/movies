@@ -9,10 +9,14 @@
  
 }
 .moviehomepage{
-    margin:  0px 100px;
    
+    min-height: 100vh;
+    margin: 30px 100px;
     
    
+}
+.moviehomepage a{
+    text-decoration: none; 
 }
 
 .Moviescategory{
@@ -34,7 +38,55 @@
     
 }
 .imdb p{
-    padding: 0 20px 0;
+    padding: 0px 20px ;
     font-size: 18px;
     font-weight: 100;
 }
+
+/* pagination */
+.pagination {
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    list-style: none;
+    padding: 20px 20px;
+  }
+  
+  .pagination li {
+    margin: 0 5px;
+  }
+  
+  .pagination li a {
+    text-decoration: none;
+    color: black;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    transition: background-color 0.1s ease;
+    cursor:pointer;
+  
+  }
+  
+  .pagination li.active a {
+    background-color: #007bff; /* Color for the active page button */
+    color: white;
+  }
+  
+  .pagination li a:hover {
+    background-color: #f0f0f0;
+  }
+  /* filmat2024 */
+  .filma2024{
+    margin: 20px 100px;
+  }
+  .filma2024items{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+    row-gap: 30px;
+  }
+  .filma2024 h2{
+    text-align: left;
+    
+    font-family: 'Poppins';
+    margin-bottom: 10px;
+    
+  }

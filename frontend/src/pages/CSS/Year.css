@@ -1,7 +1,17 @@
 .year{
     min-height: 80vh;
+    margin: 20px 100px;
+}
+.yearsfilt{
+    
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
    row-gap: 30px;
-   margin: 20px 100px;
+   
+}
+.year h5{
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-family: 'Poppins';
 }
