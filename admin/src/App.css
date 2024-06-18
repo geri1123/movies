@@ -1,0 +1,8 @@
+.appside{
+    display: flex;
+}
+@media (max-width:800px){
+    .appside{
+        flex-direction: column;
+    }
+}

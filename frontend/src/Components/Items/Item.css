@@ -55,58 +55,76 @@
     display:  inline-block;
     
 } */
-.items img {
-    height: 300px; 
+.allitem{
+    position: relative;
     
-     transition: all 0.6s ease-in-out;
+
+   
+    
 }
+.items {
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+   
+    /* width: 195px; */
+    /* width: 100%; */
+   /* margin: 0 auto;  Center align within grid item */
+    width: auto;
+    cursor: pointer;
+    /* Add padding for spacing */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+   
+}
+.items img {
+      
+   /* height: 270px; */
+ 
+   width:190px; 
+   /* width:190px; */
+     transition: all 0.6s ease-in-out;
+
+}
+
 .items a{
     text-decoration: none;
+    color: aliceblue;
 }
 .items p{
     font-size: 13px;
-    color: white;
+    color: aliceblue;
     font-weight: 400;
     padding: 0 3px;
-}
-.items .genres{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.items p:hover{
-    color:skyblue;
-}
-.items img:hover{
-  
-    transform: scale(1.05);
-}
-.items {
-    font-family: Poppins;
-    max-width: 220px;
-    margin: 0px;
-    cursor: pointer;
-    
-}
 
+}
 .title {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 5px 0;
+    width: 190px;
+  
 }
 
 .title h3 {
-    white-space: nowrap;     /* Prevents text from wrapping to the next line */
+     white-space: nowrap;     /* Prevents text from wrapping to the next line */
      overflow: hidden;       /*  Ensures that the overflowing text is hidden */
-    text-overflow: ellipsis; /* Adds the ellipsis (...) at the end of the truncated text */
-    max-width: 180px;
+    text-overflow: ellipsis;/* Adds the ellipsis (...) at the end of the truncated text */
+    
+    font-weight: 600;
+    color: aliceblue;
+   
 }
 
-.allitem {
-    position: relative;
+.genres p{
+    color: skyblue;
+    font-size: 14px;
     
 }
+
+ 
+
 
 
 /* CSS for itemdescr */
@@ -116,7 +134,8 @@
     width: 260px;
     height: auto;
     position: absolute;
-    top: 10px;
+    top: 0px;
+    left: 190px;
     font-family: Poppins;
     z-index: 1;
     padding: 10px 0px;
@@ -172,6 +191,185 @@
     background-color: grey;
     cursor: not-allowed; 
   }
+
+ 
+.items .genres{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 0;
+}
+
+.items p:hover{
+    color:aliceblue;
+}
+.items img:hover{
+  
+    transform: scale(1.05);
+}
+@media (max-width:1550px){
+    .items img{
+      
+       width: 180px; 
+     
+    }
+    .title {
+     
+        width: 180px;
+      
+    }
+}
+@media (max-width:1460px){
+    .items img{
+      
+       width: 175px;
+      
+    }
+    .title {
+     
+        width: 175px;
+      
+    }
+}
+@media  (max-width:1350px){
+
+    .items img{
+      
+        /* width: 180px; */
+       
+      }
+    .items p{
+        font-size: 13px;
+       
+    }
+    .itemdescr {
+      
+        position: absolute;
+        top: 0px;
+        
+        left: 175px;
+    }
+  }
+  @media  (max-width:1280px){
+
+    .items img{
+      /* height:  245px; */
+      /* width: 175px; */
+      width: 163px;
+    }
+    .items p{
+        font-size: 13px;
+       
+    }
+    .title {
+        font-size: 13px;
+        padding: 5px 0;
+        width: 175px;
+      
+    }
+    .itemdescr {
+      
+        position: absolute;
+        top: 0px;
+        
+        left: 173px;
+    }
+  }
+@media (max-width:1250px){
+    .items img{
+      width: 160px;
+         /* width: 165px;  */
+       /* width:auto; */
+      }
+      .itemdescr {
+      
+        position: absolute;
+        top: 0px;
+        
+        left: 165px;
+    }
+}
+@media (max-width:1200px){
+    .items img{
+        width: 160px;
+           /* width: 165px;  */
+         /* width:auto; */
+        }
+    .itemdescr {
+      
+        display: none;
+    }
+}
+
+
+@media ( max-width:900px){
+    .items img{
+        width: 170px;
+           /* width: 165px;  */
+         /* width:auto; */
+        }
+}
+@media ( max-width:790px){
+    .items img{
+        width: 160px;
+           /* width: 165px;  */
+         /* width:auto; */
+        }
+        .title {
+            width: 160px;
+            padding: 3px 0;
+        }
+}
+@media only screen and (max-width:700px){
+    .items img{
+        width: 120px;
+    }
+    .title h3 {
+        font-size: 11px;
+    }
+    .items p{
+        font-size: 10px;
+        
+        padding: 0 2px;
+    }
+    .title {
+        width: 120px;
+    }
+    
+}
+@media only screen and (max-width:600px){
+    .items img{
+        width: 100px;
+    }
+    .title {
+        width: 100px;
+    }
+    .items p{
+        font-size: 8px;
+        
+        padding: 0 2px;
+    }
+}
+@media only screen and (max-width:450px){
+    .items img{
+        width: 90px;
+    }
+    .title {
+        width: 90px;
+         padding: 2px 0;
+    }
+    .title h3{
+        font-size: 8px;
+    }
+    .items p{
+        font-size: 6px;
+        
+        padding: 0 1px;
+    }
+    .items .genres{
+        padding: 2px 0px;
+    }
+}
   /* .HeartIcon{
    
     

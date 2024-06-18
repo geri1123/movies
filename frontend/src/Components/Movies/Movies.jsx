@@ -23,7 +23,7 @@ const currentPageFromUrl = parseInt(query.get('page') || '0', 10);
 
  
  const [currentPage, setCurrentPage] = useState(currentPageFromUrl);
- const itemsPerPage =24; // Number of movies per page
+ const itemsPerPage =36; // Number of movies per page
  
  // Calculate total number of pages
  const pageCount = Math.ceil(reversedProducts.length / itemsPerPage);
@@ -58,7 +58,7 @@ const currentPageFromUrl = parseInt(query.get('page') || '0', 10);
       <div className="Moviescategory">
         <h2>Movies</h2>
         <div className="imdb">
-          <p onClick={()=>setMenu('home')}><Link to='/'>te fundit</Link>{menu==="home" ? <hr/>: <></>}</p>
+          <p onClick={()=>setMenu('home')}><Link to='/'>te fundit {menu==="home" ? <hr/>: <></>}</Link></p>
          <p ><Link to="/azh">a-zh</Link></p> 
          <p ><Link to="/trending">trending</Link></p>
         </div>

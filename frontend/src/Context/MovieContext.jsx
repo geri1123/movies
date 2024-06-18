@@ -8,6 +8,7 @@ import { createContext } from "react";
 export  const MoviesContext = createContext(); 
 
   const getDefaultCart=()=>{
+    //To save the movie in localstorage
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
       return JSON.parse(savedCart);

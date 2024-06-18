@@ -1,9 +1,8 @@
 body{
     /* background: linear-gradient(180deg, rgba(7, 15, 20, 0.8) 0%, rgba(0, 0, 0, 0.2) 60%), url(''); */
-    background-size:  cover;
-    background: rgb(146,70,252);
-    background: radial-gradient(circle, rgba(146,70,252,1) 0%, rgba(0,0,0,1) 0%, rgba(20,91,111,1) 0%, rgba(20,91,111,1) 52%, rgba(20,91,111,1) 100%) ;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-  height: auto;
+   
+  }
+  .home{
+    width: 100%;
+    
   }

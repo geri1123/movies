@@ -1,0 +1,99 @@
+.genrelist{
+    width: 100%;
+background-color: white;
+margin: 20px 20px;
+}
+.navgenre{
+    display: grid;
+    grid-template-columns: repeat(11 , 1fr);
+    border-bottom: 1px solid grey;
+    padding: 10px 10px;
+}
+.navgenre h3{
+    font-size: 18px;
+    font-weight: 400;
+    padding: 5px 5px;
+    border: 1px solid grey;
+    margin: 3px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out ;
+    text-align: center;
+    width: 100px;
+}
+.navgenre h3:hover{
+  color: white;
+  background-color: grey;
+}
+.moviedisplay{
+    margin: 30px;
+  display: grid;
+  grid-template-columns: repeat(8 , 1fr);
+  column-gap: 5px;
+  row-gap: 10px;
+
+}
+.movieitem{
+    width: 100px;
+    height: auto;
+}
+.moviedisplay img{
+    width: 100px;
+    height: 150px;
+   
+}
+.movieitem h5{
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;     /* Prevents text from wrapping to the next line */
+    overflow: hidden;       /*  Ensures that the overflowing text is hidden */
+   text-overflow: ellipsis;
+}
+.movieitem button{
+    background: transparent;
+    border: none;
+    width: 100%;
+    color: black;
+    font-size: 15px;
+    font-weight: 500;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+    background-color:skyblue ;
+}
+.searched{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.clicked{
+    background-color: grey;
+    color:white;
+}
+
+@media (max-width:1500px){
+    .navgenre h3{
+        width: 80px;
+        font-size: 16px;
+    }
+    .navgenre{
+        display: grid;
+        grid-template-columns: repeat(7 , 1fr);
+       
+        padding:5px;
+    }
+}
+@media (max-width:800px){
+    .navgenre h3{
+        width: 70px;
+        font-size: 12px;
+    }
+    .navgenre{
+        display: grid;
+        grid-template-columns: repeat(4 , 1fr);
+       
+        padding:5px;
+    }
+}

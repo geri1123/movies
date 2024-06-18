@@ -3,7 +3,7 @@ import { dropdownitems } from './dropdownitems'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
 import "./dropdown.css"
 import { MoviesContext } from '../../Context/MovieContext'
-const Dropdown = () => {
+const Dropdown = ({remove}) => {
  
   const [dropdownVisible, setDropdownVisible] =useState(false);
   const {allProduct}=useContext(MoviesContext);
@@ -11,12 +11,17 @@ const Dropdown = () => {
    const getCountByGenre = (genre) => {
      return allProduct.filter(movie => movie.genres.includes(genre)).length;
    };
+   const handleonClick=(e)=>{
+    setDropdownVisible(!dropdownVisible);
+    remove();
+   }
   return (
     <div className='dropdown' >
         <ul className= "uldropdown" >
             {dropdownitems.map((e , i)=>{
                 return <li key={i}>
-                    <Link to={`/genre/${e.name}`} onClick={() => setDropdownVisible(!dropdownVisible)}>
+                    <Link to={`/genre/${e.name}`} 
+                    onClick={handleonClick}>
                     <p>{e.name}({getCountByGenre(e.name)})</p>
                     </Link>
                 </li>

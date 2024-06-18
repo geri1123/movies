@@ -37,6 +37,7 @@ const Navbar = () => {
         navref.current.classList.remove('responsiblenav');
         menuref.current.classList.remove('responsiblenav');
         setDropdownVisible(false);
+        setDropdownVisibleyear(false);
     }
     useEffect(() => {
         const handleOutsideClick = (event) => {
@@ -61,6 +62,17 @@ const Navbar = () => {
       }
     }
   
+
+     const handleremovedropdown=(e)=>{
+     
+     setDropdownVisible(!dropdownVisible)
+     }
+     const handleremovedropdownyear=(e)=>{
+       setDropdownVisibleyear(!dropdownVisibleyear)
+      
+     }
+      
+
   return (
     <div>
       <div className="navbar">
@@ -68,34 +80,34 @@ const Navbar = () => {
       <BiAlignJustify />
       </button>
         <div className="nav-logo">
-            <h1>Movie</h1>
+            <h1><Link to="/"> Movie</Link></h1>
         </div>
         <div className="nav-menu" ref={menuref} >
             <ul ref={navref} className='navul'>
             <button onClick={remove} className='nav-btn close'>
             <AiOutlineClose />
       </button>
-                <li><Link to="/">Movies  <BiMoviePlay style={{marginLeft:"5px"}}/></Link></li>
-                <li><Link to="#">Serials  <BiCameraMovie style={{marginLeft:"5px"}}/> </Link></li>
-                <li>
-                  <Link to="#" onClick={() => setDropdownVisible(!dropdownVisible)}>
-                    
-                  <MdArrowDropDown />
+                <li><Link to="/" onClick={remove}> <BiMoviePlay style={{marginRight:"5px"}}/>Movies </Link></li>
+                <li><Link to="#" onClick={remove}> <BiCameraMovie style={{marginRight:"5px"}}/>Serials  </Link></li>
+                <li >
+                  <Link to="#" onClick={ handleremovedropdown }>
+                    <FaRegCircle style={{marginRight:"5px"}}/>
+                 
                      Zhanre 
-                    
-                 <FaRegCircle style={{marginLeft:"5px"}}/></Link> 
+                     <MdArrowDropDown />
+                 </Link> 
                 
                 
                   
-           {dropdownVisible && <Dropdown  />}</li>
-           <li><Link to="#"  onClick={() => setDropdownVisibleyear(!dropdownVisibleyear)}>
-           <MdArrowDropDown />
+           {dropdownVisible && <Dropdown remove={remove}  />}</li>
+           <li><Link to="#"  onClick={ handleremovedropdownyear}>
+           <GiCalendarHalfYear style={{marginRight:"5px"}} />
            Year 
-           <GiCalendarHalfYear style={{marginLeft:"5px"}} />
+           <MdArrowDropDown />
            </Link>
-           {dropdownVisibleyear && <Dropdownyear/>}
+           {dropdownVisibleyear && <Dropdownyear remove={remove}/>}
            </li>
-                <li><Link  to='/favourites'>Favourites  <GrFavorite style={{marginLeft:"5px"}} /></Link><span>{getTotalCartItem()}</span></li>
+                <li><Link onClick={remove} to='/favourites'> <GrFavorite style={{marginRight:"5px"}}/>Favourites</Link><span>{getTotalCartItem()}</span></li>
             </ul>
         </div>
         <div className="search">

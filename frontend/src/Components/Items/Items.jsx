@@ -1,6 +1,6 @@
 
-import React, {  useRef} from 'react';
-
+import React, {  useRef } from 'react';
+import { useEffect } from 'react';
 import './Item.css';
 // import { MoviesContext } from '../../Context/MovieContext';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
@@ -29,11 +29,12 @@ const Items = (props) => {
       descr.style.left = `-${descrRect.width -10 }px`;
     // } else if (itemRect.left - descrRect.width < 0) { // Check if the description overflows the viewport on the left
       // descr.style.left = `${itemRect.width -22 }px`;
-    } else {
-       descr.style.left = '210px';
+    } 
+    // else {
+    //    descr.style.left = '190px';
       
 
-    }
+    // }
   };
 
   const hideItem = () => {
@@ -42,7 +43,27 @@ const Items = (props) => {
 
   // const isAlreadyInCart=CartItem[props.id]>0;
   
- 
+  const elementRef = useRef(null);
+
+  const updateHeight = () => {
+    if (elementRef.current) {
+      const width = elementRef.current.offsetWidth;
+      elementRef.current.style.height = `${1.5 * width}px`;
+    }
+  };
+
+  useEffect(() => {
+    // Update height on mount
+    updateHeight();
+
+    // Update height on window resize
+    window.addEventListener('resize', updateHeight);
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener('resize', updateHeight);
+    };
+  }, []);
 
   return (
     <div className="allitem"  ref={itemRef}>
@@ -50,7 +71,7 @@ const Items = (props) => {
       <div className='items' >
         <Link  to={`/MoviesDetail/${props.id}/${props.title}${props.year}`} onClick={() => window.scrollTo(0, 0)} >
           
-        <img 
+        <img ref={elementRef} 
           onMouseEnter={showItem} 
           onMouseLeave={hideItem}
           src={props.posterUrl} 
@@ -62,7 +83,7 @@ const Items = (props) => {
         </div></Link>
         <div className="genres">
         {props.genres.map((genre, index) => (
-    <Link to={`/genre/${genre}`}><p key={index}>{genre}</p></Link> 
+    <Link key={index} to={`/genre/${genre}`}><p >{genre}</p></Link> 
   ))}
         </div> 
         
@@ -96,7 +117,7 @@ const Items = (props) => {
         <p>{props.plot}</p>
         <p>Genre:
         { props.genres.map((genre ,index)=>(
-               <Link to={`/genre/${genre}`} > <span key={index}>  {genre}</span></Link>
+               <Link  key={index} to={`/genre/${genre}`} > <span>  {genre}</span></Link>
 
      ) )
         }
