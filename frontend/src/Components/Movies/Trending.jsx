@@ -4,6 +4,7 @@ import Items from '../Items/Items';
 import './Movies.css'
 import { Link , useHistory , useLocation} from 'react-router-dom/cjs/react-router-dom';
 import ReactPaginate from "react-paginate";
+import GridLoader from 'react-spinners/GridLoader';
 const Trending = () => {
     const [menu , setMenu]=useState('trending')
     const{allProduct , loading}=useContext(MoviesContext);
@@ -17,7 +18,7 @@ const Trending = () => {
     const currentPageFromUrl = parseInt(query.get('page') || '0', 10);
     // State variables for pagination
 const [currentPage, setCurrentPage] = useState(currentPageFromUrl);
-const itemsPerPage =24; // Number of movies per page
+const itemsPerPage =36; // Number of movies per page
 
 // Calculate total number of pages
 const pageCount = Math.ceil(sortruntime.length / itemsPerPage);
@@ -55,9 +56,9 @@ const handlePageChange = ({ selected }) => {
 </div>
 
 
-
+{loading &&<div className="loading"><GridLoader color="#36d7b7" /></div>}
 <div className="movies" >
-  {loading && <div>Loading...</div>}
+  
 
   {currentMovies.map((movie , i)=>{
   return  <Items  key={i} id={movie.id} posterUrl={movie.posterUrl} title={movie.title} year={movie.year} genres={movie.genres} actors={movie.actors} plot={movie.plot} runtime={movie.runtime}/>

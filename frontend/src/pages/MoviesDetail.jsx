@@ -15,7 +15,7 @@ const MoviesDetail = () => {
       const [loading , setLoading]=useState(true);
      const [product , setProduct]=useState('');
      useEffect(()=>{
-       fetch(`http://localhost:8000/movies/${movieId }`  )
+       fetch(`http://localhost:2000/allproducts/${movieId }`  )
        .then((res)=>res.json())
        
        .then((data)=>{

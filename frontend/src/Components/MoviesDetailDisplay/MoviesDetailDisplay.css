@@ -1,5 +1,9 @@
+
+.alldisplay{
+    padding: 0 130px;
+}
 .moviedetaildisplay{
-    margin: 40px 100px 0px 100px;
+    
     
     font-family: Poppins;
     display: grid;
@@ -121,4 +125,30 @@ border-radius: 10px ;
 }
 .genredisplay a{
     text-decoration: none;
+}
+.comments{
+    padding: 20px 20px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color:rgba(0,0,0, 0.1) ;
+}
+
+.userscomments{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid aliceblue;
+    width: 100%;
+    overflow: scroll;
+}
+
+.com{
+    display: flex;
+    margin: 5px;
+
+}
+.com .p-comment{
+    width: 200px;
+    
+    height: 40px;
 }

@@ -6,8 +6,11 @@ import './MoviesDetailRelated.css'
 const MoviesDetailRelated = ({product}) => {
    
     const [allProduct , setAllProduct]=useState([]);
+    
+
+
     useEffect(()=>{
-        fetch('http://localhost:8000/movies/')
+        fetch('http://localhost:2000/allproducts')
         .then((res)=>res.json())
         .then((data)=>{setAllProduct(data)})
     } ,[])
@@ -16,6 +19,7 @@ const MoviesDetailRelated = ({product}) => {
         // (prod) => prod.id !== product.id && prod.genres.some((genre) => product.genres.includes(genre))
         (prod) => prod.id !== product.id && prod.genres.filter((genre) => product.genres===genre)
     ).slice(-8); 
+  
     return (
 <div className='MoviesDetailRelated '>
         <h1>Related Movies</h1>
@@ -34,12 +38,12 @@ const MoviesDetailRelated = ({product}) => {
             }
         </div>
         <div className="MoviesDetailRelatedItemsRight">
-            <p>rreklamaaaa</p>
-        </div>
+      
 
     </div>
 </div>
-  )
-}
+</div>
+    )
+ }
 
 export default MoviesDetailRelated

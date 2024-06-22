@@ -5,8 +5,8 @@
   /* grid-template-columns: repeat(6, 1fr);   */
   /*grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); /* Responsive columns */
   row-gap: 30px;
+  /* grid-template-columns: repeat(6, 1fr); */
   grid-template-columns: repeat(6, 1fr);
-
   column-gap: 20px; 
   /* overflow-x: hidden;
   overflow-y: hidden; */
@@ -14,15 +14,12 @@
  
 }
 
-
-.moviehomepage{
-   
-    min-height: 80vh;
-    padding: 0 130px;  
-}
 .Moviescategory h2{
   color: aliceblue;
   font-weight: 300;
+}
+.Moviescategory {
+  margin-bottom: 20px;
 }
 .Moviescategory a{
   font-weight: 100;
@@ -32,12 +29,24 @@
     color: #53a4fa;
     
 }
+
+  .Moviescategory{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Poppins;
+    margin-bottom: 20px;
+}
+.moviehomepage{
+  padding: 0 130px;
+  min-height: 100vh;
+}
 .imdb p{
   padding: 0px 20px;
 }
 .filma2024{
   padding: 0 130px;
-  margin: 50px 0;
+  margin: 10px 0;
 }
 .filma2024items{
   display: grid;
@@ -56,14 +65,56 @@
   font-weight: 300;
   
 }
+/* pagination */
+.pagination {
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  list-style: none;
+  padding: 20px 20px;
+  margin-top: 10px;
+}
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination li a {
+  text-decoration: none;
+  color: black;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  transition: background-color 0.1s ease;
+  cursor:pointer;
+
+}
+
+.pagination li.active a {
+  background-color: #007bff; /* Color for the active page button */
+  color: white;
+}
+
+.pagination li a:hover {
+  background-color: #f0f0f0;
+}
+.loading{
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  color: aliceblue;
+}
+
 
 @media (max-width:1460px){
-
+ 
   .moviehomepage{
    
-  
     padding: 0 100px;  
 }
+
 .filma2024{
   padding: 0 100px;
   
@@ -151,6 +202,7 @@
    
   }
  }
+ 
  @media (max-width:1200px){
 .movies{
    
@@ -166,7 +218,35 @@
     }
  }
 
- 
+ @media (max-width:1100px){
+  .movies{
+   
+   
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    column-gap: 10px; 
+    }
+    .filma2024items{
+   
+   
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      column-gap: 10px; 
+      }
+ }
+
+ @media (max-width:1000px){
+  .movies{
+   
+   
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    column-gap: 10px; 
+    }
+    .filma2024items{
+   
+   
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      column-gap: 10px; 
+      }
+ }
  @media ( max-width:900px){
   .movies{
    
@@ -179,6 +259,10 @@
    
       grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
       column-gap: 10px; 
+      }
+      .filma2024{
+        
+        margin: 5px 0;
       }
  }
  @media ( max-width:790px){
@@ -203,11 +287,11 @@
  }
  @media only screen and (max-width:700px){
 .movies{
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
  row-gap: 15px;
 }
 .filma2024items{
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
  row-gap: 15px;
 }
 .moviehomepage{
@@ -215,12 +299,65 @@
 }
 .filma2024{
   padding: 0 7px; 
-  margin: 20px 0;
+  margin: 5px 0;
 }
 
-
+.filma2024 h2{
+  padding: 5px 0px;
+  margin-bottom: 10px;
+}
  }
  @media only screen and (max-width:600px){
+  .movies{
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    column-gap: 8px; 
+   row-gap: 10px;
+  }
+  .filma2024items{
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    column-gap: 8px; 
+   row-gap: 10px;
+  }
+  
+  .Moviescategory h2{
+    font-size: 14px;
+    
+    
+   
+  }
+  .filma2024 h2{
+    font-size: 14px; 
+    padding: 0px 0px;
+   
+  }
+  
+  .Moviescategory a{
+
+    font-size: 10px;    
+  }
+  .imdb p{
+    padding: 0px 5px;
+  }
+  .pagination{
+    padding: 5px 5px;
+  margin-top: 5px;
+  }
+  .pagination li a {
+    text-decoration: none;
+    color: black;
+    padding: 5px 5px;
+    font-size: 10px;
+    
+  }
+  .filma2024{
+    
+    margin: 5px 0;
+  }
+  .pagination li {
+    margin: 0 3px;
+  }
+ }
+ @media only screen and (max-width:550px){
   .movies{
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     column-gap: 8px; 
@@ -231,27 +368,6 @@
     column-gap: 8px; 
    row-gap: 10px;
   }
-  .Moviescategory{
-    margin-bottom: 10px;
-  }
-  .Moviescategory h2{
-    font-size: 20px;
-   
-  }
-  .filma2024 h2{
-    font-size: 20px; 
-    padding: 10px 0px;
-   
-  }
-  
-  .Moviescategory a{
-
-    font-size: 14px;    
-  }
-  .imdb p{
-    padding: 0px 10px;
-  }
-  
  }
  @media only screen and (max-width:450px){
   .movies{
@@ -264,16 +380,27 @@
     column-gap: 5px; 
    row-gap: 10px;
   }
- }
+ 
 .Moviescategory{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: Poppins;
-    margin-bottom: 20px;
+    
+    margin-bottom: 10px;
+}
+
 }
 
 
+@media only screen and (max-width:400px){
+  .movies{
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    column-gap: 3px; 
+   row-gap: 10px;
+  }
+  .filma2024items{
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    column-gap: 3px; 
+   row-gap: 10px;
+  }
+}
 
 
 .Moviescategory h1{
@@ -289,36 +416,6 @@
 }
 
 
-/* pagination */
-.pagination {
-    display: flex;
-    align-items:center;
-    justify-content:center;
-    list-style: none;
-    padding: 20px 20px;
-  }
-  
-  .pagination li {
-    margin: 0 5px;
-  }
-  
-  .pagination li a {
-    text-decoration: none;
-    color: black;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    transition: background-color 0.1s ease;
-    cursor:pointer;
-  
-  }
-  
-  .pagination li.active a {
-    background-color: #007bff; /* Color for the active page button */
-    color: white;
-  }
-  
-  .pagination li a:hover {
-    background-color: #f0f0f0;
-  }
+
   /* filmat2024 */
   

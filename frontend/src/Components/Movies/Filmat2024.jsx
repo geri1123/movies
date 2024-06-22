@@ -2,14 +2,17 @@ import React, { useContext } from 'react'
 import { MoviesContext } from '../../Context/MovieContext'
 import Items from '../Items/Items';
 import './Movies.css';
+import GridLoader from 'react-spinners/GridLoader';
 const Filmat2024 = () => {
-    const {allProduct}=useContext(MoviesContext);
+    const {allProduct  , loading}=useContext(MoviesContext);
     const newest=allProduct.slice(-12).sort((a , b)=>b.year - a.year);
   return (
     <div className='filma2024'>
                 <h2>New Movies</h2>
-        <div className="filma2024items">
 
+                {loading && <div className='loading'><GridLoader color="#36d7b7" /></div>}
+        <div className="filma2024items">
+            
 
        
             {

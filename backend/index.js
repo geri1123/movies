@@ -68,6 +68,15 @@ const Product=mongoose.model("Product" , {
         type:Boolean,
         default:true,
     },
+    comments: [{
+        name: String,
+        email: String,
+        comment: String,
+        date: {
+            type: Date,
+            default: Date.now,
+        },
+    }]
 })
 
 app.post('/addproduct', async (req , res)=>{
@@ -136,8 +145,52 @@ app.post("/removeproduct" , async (req , res)=>{
 app.get("/allproducts" , async (req , res)=>{
     let products=await Product.find({});
     console.log("all products fetch");
+    res.setHeader('Content-Type', 'application/json');
     res.send(products);
 })
+
+app.get('/allproducts/:id', async (req, res) => {
+    try {
+        const product = await Product.findOne({ id: req.params.id });
+        if (!product) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+        res.json(product);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+//updateproduct
+app.get('/product/:id', async (req, res) => {
+    const product = await Product.findOne({ id: req.params.id });
+    res.json(product);
+  });
+
+
+  app.put('/updateproduct/:id', async (req, res) => {
+    const { id } = req.params;
+    const updatedProduct = req.body;
+  
+    await Product.findOneAndUpdate({ id }, updatedProduct);
+    res.json({ success: true });
+  });
+
+//Add comment
+app.post('/addcomment/:id', async (req, res) => {
+    const { id } = req.params;
+    const { name, email, comment } = req.body;
+
+    const product = await Product.findOne({ id });
+
+    if (product) {
+        product.comments.push({ name, email, comment });
+        await product.save();
+        res.json({ success: true, message: 'Comment added successfully' });
+    } else {
+        res.status(404).json({ success: false, message: 'Product not found' });
+    }
+});
 
 app.listen(port ,(error)=>{
     if(!error){

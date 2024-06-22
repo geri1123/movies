@@ -56,12 +56,17 @@
     
 } */
 .allitem{
-    position: relative;
-    
+  
+      position: relative;
 
    
     
 }
+.movie-item {
+    /* aspect-ratio: 1; Maintain a 1:1 aspect ratio (square) */
+    /* width: 100%; */
+    /* height: 100%; */
+  }
 .items {
      display: flex;
     flex-direction: column;
@@ -69,9 +74,10 @@
     
    
     /* width: 195px; */
-    /* width: 100%; */
+     /* width: 100%;  */
    /* margin: 0 auto;  Center align within grid item */
-    width: auto;
+     width: auto; 
+    
     cursor: pointer;
     /* Add padding for spacing */
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
@@ -218,6 +224,10 @@
         width: 180px;
       
     }
+    .title {
+        width: 180px;
+    
+    }
 }
 @media (max-width:1460px){
     .items img{
@@ -233,11 +243,7 @@
 }
 @media  (max-width:1350px){
 
-    .items img{
-      
-        /* width: 180px; */
-       
-      }
+    
     .items p{
         font-size: 13px;
        
@@ -264,7 +270,7 @@
     .title {
         font-size: 13px;
         padding: 5px 0;
-        width: 175px;
+        width: 163px;
       
     }
     .itemdescr {
@@ -288,6 +294,10 @@
         
         left: 165px;
     }
+    .title {
+        width: 160px;
+        
+    }
 }
 @media (max-width:1200px){
     .items img{
@@ -301,12 +311,43 @@
     }
 }
 
-
+@media (max-width:1100px){
+    .items img{
+        width: 145px;
+           /* width: 165px;  */
+         /* width:auto; */
+        }
+        .genres p{
+        
+            font-size: 11px;
+            
+        }
+        .title {
+            width: 145px;
+        
+        }
+        
+}
+@media (max-width:1000px){
+    .items img{
+        width: 135px;
+           /* width: 165px;  */
+         /* width:auto; */
+        }
+        .title {
+            width: 135px;
+        
+        }
+}
 @media ( max-width:900px){
     .items img{
         width: 170px;
            /* width: 165px;  */
          /* width:auto; */
+        }
+        .title {
+            width: 170px;
+            
         }
 }
 @media ( max-width:790px){
@@ -322,7 +363,7 @@
 }
 @media only screen and (max-width:700px){
     .items img{
-        width: 120px;
+        width: 140px;
     }
     .title h3 {
         font-size: 11px;
@@ -333,21 +374,29 @@
         padding: 0 2px;
     }
     .title {
-        width: 120px;
+        width: 140px;
     }
     
 }
 @media only screen and (max-width:600px){
     .items img{
-        width: 100px;
+        width: 120px;
     }
     .title {
-        width: 100px;
+        width: 120px;
     }
     .items p{
         font-size: 8px;
         
         padding: 0 2px;
+    }
+}
+@media only screen and (max-width:550px){
+    .items img{
+        width: 100px;
+    }
+    .title {
+        width: 100px;
     }
 }
 @media only screen and (max-width:450px){
@@ -368,6 +417,15 @@
     }
     .items .genres{
         padding: 2px 0px;
+    }
+}
+@media only screen and (max-width:400px){
+    .items img{
+        width: 80px;
+    }
+    .title {
+        width: 80px;
+         padding: 2px 0;
     }
 }
   /* .HeartIcon{

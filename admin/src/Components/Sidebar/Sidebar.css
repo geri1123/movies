@@ -34,5 +34,16 @@
     }
     .sidebar-item{
         margin: 0;
+        width: 70px;
+    }
+    .sidebar-item img{
+        width: 20px;
+        height: 30px;
+    }
+    .sidebar-item p{
+        font-size: 14px;
+       overflow: hidden;
+       text-overflow: ellipsis;
+       white-space: nowrap;
     }
 }

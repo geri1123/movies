@@ -7,6 +7,8 @@ import Sidebar from './Components/Sidebar/Sidebar'
 import Listproduct from './Components/Listproduct/Listproduct'
 import './App.css'
 import GenreList from './Components/Gernrelist/GenreList'
+import EditProduct from './Components/Editproduxt/Editproduct'
+
 const App = () => {
   return (
     <div className='app'>
@@ -18,6 +20,7 @@ const App = () => {
             <Route exact path='/' element={<Addproduct/>}/>
             <Route path='/listproduct' element={<Listproduct/>}/>
             <Route path='genrelist' element={<GenreList/>}/>
+            <Route path='/editproduct/:id' element={<EditProduct/>}/> 
         </Routes></div>
     </div>
   )

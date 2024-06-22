@@ -14,6 +14,10 @@ const Listproduct = () => {
     fetchInfo();
   }, []);
    const remove=async (id)=>{
+    const confirm=window.confirm('Are you sure you want to delete this movie')
+    if(confirm){
+
+    
     await fetch('http://localhost:2000/removeproduct' , {
       method:'POST',
       headers:{
@@ -23,6 +27,7 @@ const Listproduct = () => {
       body:JSON.stringify({id:id})
     })
     await fetchInfo();
+  }
    }
    const length=allProducts.length;
 

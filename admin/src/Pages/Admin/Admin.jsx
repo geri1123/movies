@@ -6,7 +6,7 @@ import Addproduct from '../../Components/Addproduct/Addproduct'
 import Listproduct from '../../Components/Listproduct/Listproduct'
 const Admin = () => {
   return (
-    <div className='admin'>
+    <div className='admin' >
         <Sidebar/>
     
         <Routes>

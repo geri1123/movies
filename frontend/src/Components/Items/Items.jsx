@@ -66,7 +66,7 @@ const Items = (props) => {
   }, []);
 
   return (
-    <div className="allitem"  ref={itemRef}>
+    <div className="allitem movie-item"  ref={itemRef}>
      
       <div className='items' >
         <Link  to={`/MoviesDetail/${props.id}/${props.title}${props.year}`} onClick={() => window.scrollTo(0, 0)} >

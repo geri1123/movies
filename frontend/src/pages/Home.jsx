@@ -4,6 +4,7 @@ import './CSS/Home.css'
 import  '../Assets/background.png'
 import Filma2024 from '../Components/Movies/Filmat2024';
 const Home = () => {
+ 
   return (
     <div className='home'>
       <Movies/>

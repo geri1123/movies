@@ -9,10 +9,10 @@ export  const MoviesContext = createContext();
 
   const getDefaultCart=()=>{
     //To save the movie in localstorage
-    const savedCart = localStorage.getItem('cart');
-    if (savedCart) {
-      return JSON.parse(savedCart);
-    }
+      const savedCart = localStorage.getItem('cart');
+      if (savedCart) {
+        return JSON.parse(savedCart);
+      }
        let cart={};
        for(let index=0 ; index<300+1 ; index++){
          cart[index]=0;
@@ -27,7 +27,7 @@ export  const MoviesContext = createContext();
     const [allProduct , setAllProduct]=useState([]);
     const [CartItem , setCartItem]=useState(getDefaultCart());
     useEffect(() =>{
-        fetch('http://localhost:8000/movies')
+        fetch('http://localhost:2000/allproducts')
         .then((res)=>res.json())
         .then((data)=>{
           setAllProduct(data);
@@ -35,9 +35,9 @@ export  const MoviesContext = createContext();
         })
     }, []);
 
-    const saveCartToLocalStorage = (cart) => {
-      localStorage.setItem('cart', JSON.stringify(cart));
-    };
+     const saveCartToLocalStorage = (cart) => {
+       localStorage.setItem('cart', JSON.stringify(cart));
+     };
     const AddToCart = (itemId) => {
       setCartItem((prev) => {
         const newCart = { ...prev, [itemId]: prev[itemId] + 1 };
