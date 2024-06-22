@@ -10,7 +10,7 @@ const cors=require("cors");
 app.use(express.json());
 app.use(cors());
 //database connection with mongodb
-mongoose.connect("mongodb+srv://moviestackdiv:geri1996@cluster0.d7hydlz.mongodb.net/movies");
+mongoose.connect("mongodb+srv://moviestackdiv:********@cluster0.d7hydlz.mongodb.net/movies");
 
 
 //api creation
