@@ -6,16 +6,18 @@ import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
  import './CSS/Genres.css'
 import '../Components/Movies/Movies.css'
 import '../Components/Items/Item.css'
+import GridLoader from 'react-spinners/GridLoader';
 const Genres = () => {
    
 
     const {name}=useParams();
     const [allProduct , setAllProduct]=useState([]);
-    
+    const [loading , setLoading]=useState(true)
     useEffect(()=>{
         fetch('http://localhost:2000/allproducts')
         .then((res)=>res.json())
         .then((data)=>{setAllProduct(data)})
+        setLoading(false);
     } , []);
      const genresfilter=allProduct.slice().reverse().filter((prod)=>prod.genres.includes(name));
     const length=genresfilter.length;
@@ -58,7 +60,9 @@ const currentPageFromUrl = parseInt(query.get('page') || '0', 10);
   return (
     <div className='moviehomepage'>
     <h5>Ju keni {length} rezultate nga {name}</h5>
+    {loading && <div className='loading'><GridLoader color="#36d7b7" /></div>}
       <div className="movies">
+      
 
      
       {  

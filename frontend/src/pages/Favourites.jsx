@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { MoviesContext } from '../Context/MovieContext'
-import { Link } from 'react-router-dom/cjs/react-router-dom'
+
 // import Items from '../Components/Items/Items'
  import './CSS/Favourites.css'
 import '../Components/Movies/Movies.css'

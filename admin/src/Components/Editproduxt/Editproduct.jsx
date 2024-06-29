@@ -139,11 +139,10 @@
 //   );
 // };
 
-// export default EditProduct
+// // export default EditProduct
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './Editproduct.css';
-import upload_area from '../../assets/upload_area.svg'; // Adjust the path if necessary
 
 const EditProduct = () => {
   const { id } = useParams();
@@ -153,16 +152,55 @@ const EditProduct = () => {
     title: '',
     year: '',
     runtime: '',
+    trailer:'',
     genres: [],
     director: '',
     actors: '',
     plot: '',
-    posterUrl: ''
+    videoUrl: {
+      video1: '',
+      video2: '',
+      video3: '',
+      video4: ''
+    }
   });
 
-  const [selectedGenre, setSelectedGenre] = useState("");
-  const [posterUrl, setPosterUrl] = useState(null);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState('');
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await fetch(`http://localhost:2000/product/${id}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch product details');
+        }
+        const data = await response.json();
+        setProductDetails(data);
+      } catch (error) {
+        console.error('Error fetching product:', error);
+        // Handle error scenarios (e.g., display an error message to the user)
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
+
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+
+    if (name.startsWith('videoUrl')) {
+      const videoUrlField = name.split('.')[1]; // Extract the specific videoUrl field (video1, video2, ...)
+      setProductDetails({
+        ...productDetails,
+        videoUrl: {
+          ...productDetails.videoUrl,
+          [videoUrlField]: value
+        }
+      });
+    } else {
+      setProductDetails({ ...productDetails, [name]: value });
+    }
+  };
 
   const addGenre = () => {
     if (selectedGenre && !productDetails.genres.includes(selectedGenre)) {
@@ -176,86 +214,64 @@ const EditProduct = () => {
     setProductDetails({ ...productDetails, genres: updatedGenres });
   };
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const response = await fetch(`http://localhost:2000/product/${id}`);
-      const data = await response.json();
-      setProductDetails(data);
-    };
-
-    fetchProduct();
-  }, [id]);
-
-  const changeHandler = (e) => {
-    setProductDetails({ ...productDetails, [e.target.name]: e.target.value });
-  };
-
-  const imageHandler = (e) => {
-    setPosterUrl(e.target.files[0]);
-  };
-
   const updateProduct = async () => {
-    const isConfirmed=window.confirm('are you sure you want to update this movie?')
-if(isConfirmed){
-    setErrorMessage("");
+    const isConfirmed = window.confirm('Are you sure that you want to edit this product?');
+    if (isConfirmed) {
+      try {
+        // Send updated productDetails to server
+        const response = await fetch(`http://localhost:2000/updateproduct/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(productDetails)
+        });
 
-    if (posterUrl) {
-      let formData = new FormData();
-      formData.append('product', posterUrl);
+        if (!response.ok) {
+          throw new Error('Failed to update product');
+        }
 
-      const response = await fetch('http://localhost:2000/upload', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-        },
-        body: formData,
-      });
-
-      const responseData = await response.json();
-
-      if (responseData.success) {
-        productDetails.posterUrl = responseData.image_url;
-      } else {
-        setErrorMessage("Failed to upload new poster image.");
-        return;
+        const data = await response.json();
+        if (data.success) {
+          // Navigate to the genre list page after successful update
+          navigate('/genrelist');
+        } else {
+          throw new Error('Update operation failed on the server');
+        }
+      } catch (error) {
+        console.error('Error updating product:', error);
+        // Handle error scenarios (e.g., display an error message to the user)
       }
     }
-
-    await fetch(`http://localhost:2000/updateproduct/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(productDetails)
-    });
-
-    navigate('/genrelist');
-}
   };
 
   return (
     <div className='edit-product'>
       <h1>Edit product</h1>
+      <img src={productDetails.posterUrl} alt="" />
       <div className="addproduct-itemfield">
         <p>Title</p>
-        <input type="text" value={productDetails.title} name="title" onChange={changeHandler} />
+        <input type="text" value={productDetails.title} name="title" onChange={changeHandler}/>
       </div>
-      <div className="addproduct-runtime">
+      <div className="addproduct-runtie">
         <div className="addproduct-itemfield">
           <p>Year</p>
-          <input type="number" value={productDetails.year} name="year" onChange={changeHandler} />
+          <input type="number" value={productDetails.year} name="year" onChange={changeHandler}/>
         </div>
         <div className="addproduct-itemfield">
-          <p>Runtime</p>
-          <input type="number" value={productDetails.runtime} name="runtime" onChange={changeHandler} />
+          <p>runtime</p>
+          <input type="number" value={productDetails.runtime} name="runtime" onChange={changeHandler}/>
         </div>
+      </div>
+      <div className="addproduct-itemfield">
+        <p>Trailer</p>
+        <input type="text" value={productDetails.trailer} name="trailer" onChange={changeHandler}/>
       </div>
       <div className="addproduct-itemfield">
         <p>Genres</p>
         <div className="addproduct-genres">
           <select value={selectedGenre} onChange={(e) => setSelectedGenre(e.target.value)}>
             <option value="">Select a genre</option>
-            {/* Add your genre options here */}
             <option value="Comedy">Comedy</option>
             <option value="Fantasy">Fantasy</option>
             <option value="Crime">Crime</option>
@@ -290,26 +306,36 @@ if(isConfirmed){
       </div>
       <div className="addproduct-itemfield">
         <p>Director</p>
-        <input type="text" value={productDetails.director} name="director" onChange={changeHandler} />
+        <input type="text" value={productDetails.director} name="director" onChange={changeHandler}/>
       </div>
       <div className="addproduct-itemfield">
         <p>Actors</p>
-        <input type="text" value={productDetails.actors} name="actors" onChange={changeHandler} />
+        <input type="text" value={productDetails.actors} name="actors" onChange={changeHandler}/>
       </div>
       <div className="addproduct-itemfield">
         <p>Plot</p>
-        <textarea name="plot" value={productDetails.plot} onChange={changeHandler} />
+        <textarea name="plot" value={productDetails.plot} onChange={changeHandler}></textarea>
       </div>
       <div className="addproduct-itemfield">
-        <label htmlFor="file-input">
-          <img src={posterUrl ? URL.createObjectURL(posterUrl) : (productDetails.posterUrl || upload_area)} className='addproduct-thumbnail-img' alt="" />
-        </label>
-        <input onChange={imageHandler} type="file" name='posterUrl' id='file-input' hidden />
+        <p>Video 1 URL</p>
+        <input type="text" value={productDetails.videoUrl.video1} name="videoUrl.video1" onChange={changeHandler} />
       </div>
-      {errorMessage && <p style={{ color: "red" }} className="error-message">{errorMessage}</p>}
+      <div className="addproduct-itemfield">
+        <p>Video 2 URL</p>
+        <input type="text" value={productDetails.videoUrl.video2} name="videoUrl.video2" onChange={changeHandler} />
+      </div>
+      <div className="addproduct-itemfield">
+        <p>Video 3 URL</p>
+        <input type="text" value={productDetails.videoUrl.video3} name="videoUrl.video3" onChange={changeHandler} />
+      </div>
+      <div className="addproduct-itemfield">
+        <p>Video 4 URL</p>
+        <input type="text" value={productDetails.videoUrl.video4} name="videoUrl.video4" onChange={changeHandler} />
+      </div>
+     
       <button className='button' onClick={updateProduct}>Update Product</button>
     </div>
   );
 };
-
+// posterUrl ? URL.createObjectURL(posterUrl) : upload_area
 export default EditProduct;

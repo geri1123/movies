@@ -3,7 +3,8 @@ import './Listproduct.css';
 
 const Listproduct = () => {
   const [allProducts, setAllProducts] = useState([]);
-  
+  const [showConfirmDialog, setShowConfirmDialog]=useState(false);
+  const [deleteId, setDeleteId] = useState(null);
   const fetchInfo = async () => {
     await fetch('http://localhost:2000/allproducts')
       .then((res) => res.json())
@@ -13,10 +14,13 @@ const Listproduct = () => {
   useEffect(() => {
     fetchInfo();
   }, []);
-   const remove=async (id)=>{
-    const confirm=window.confirm('Are you sure you want to delete this movie')
-    if(confirm){
-
+  const remove =async(id)=>{
+      setShowConfirmDialog(true);
+      setDeleteId(id);
+  }
+   const confirmDelete=async (id)=>{
+   
+setShowConfirmDialog(false);
     
     await fetch('http://localhost:2000/removeproduct' , {
       method:'POST',
@@ -24,10 +28,14 @@ const Listproduct = () => {
         Accept:'application/json',
         'Content-Type':'application/json',
       },
-      body:JSON.stringify({id:id})
+      body:JSON.stringify({id:deleteId})
     })
     await fetchInfo();
-  }
+  
+   }
+
+   const cancelDelete=()=>{
+    setShowConfirmDialog(false);
    }
    const length=allProducts.length;
 
@@ -60,6 +68,17 @@ const genrelength=filteredProducts.length;
     
      
      </div>
+     {showConfirmDialog && (
+      <div className="confirm-dialog">
+      <div className="confirm-content">
+        <p>Are you sure you want to delete this movie?</p>
+        <div className="confirm-buttons">
+          <button onClick={confirmDelete}>Yes</button>
+          <button onClick={cancelDelete}>No</button>
+        </div>
+      </div>
+    </div>
+     )}
      </div>
       <table className="product-table">
         <thead>

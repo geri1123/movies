@@ -52,7 +52,7 @@ const SearchResults = () => {
   return (
     <div className="moviehomepage">
       <h5>Search Results for "{searchQuery}"</h5>
-      {/* {loading && <div className='loading'><GridLoader color="#36d7b7" /></div>} */}
+      {loading && <div className='loading'><GridLoader color="#36d7b7" /></div>} 
       <div className="movies">
         {filteredMovies.length > 0 ? (
           currentMovies.map((movie, i) => (

@@ -36,3 +36,12 @@
     }
 
 }
+.loading{
+    width: 100%;
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: aliceblue;
+  }

@@ -6,14 +6,17 @@ import { useParams } from 'react-router-dom/cjs/react-router-dom'
 import './CSS/Year.css'
 import '../Components/Movies/Movies.css'
 import '../Components/Items/Item.css'
+import GridLoader from 'react-spinners/GridLoader';
 // import '../Components/Movies/Movies.css'
 const Year = () => {
   const { startYear, endYear } = useParams();
   const [allProduct , setAllProduct]=useState([]);
+  const [loading , setLoading]=useState(true)
   useEffect(()=>{
      fetch('http://localhost:2000/allproducts')
     .then((res)=>res.json())
     .then((data)=>{setAllProduct(data)})
+    setLoading(false);
   } ,[]);
   
   
@@ -61,7 +64,7 @@ const currentPageFromUrl = parseInt(query.get('page') || '0', 10);
 
     <div className='moviehomepage'>
        <h5>Ju keni {length} rezultate nga viti {startYear} deri ne {endYear }</h5> 
-    
+    {loading && <div className='loading'><GridLoader color="#36d7b7" /></div>}
       <div className="movies">
     {
        currentMovies.map((movie , i)=>{

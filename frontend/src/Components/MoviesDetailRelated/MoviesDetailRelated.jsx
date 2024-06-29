@@ -14,13 +14,13 @@ const MoviesDetailRelated = ({product}) => {
         .then((res)=>res.json())
         .then((data)=>{setAllProduct(data)})
     } ,[])
-
-    const related = allProduct.filter(
-        // (prod) => prod.id !== product.id && prod.genres.some((genre) => product.genres.includes(genre))
-        (prod) => prod.id !== product.id && prod.genres.filter((genre) => product.genres===genre)
-    ).slice(-8); 
-  
-    return (
+  if (!product || !product.genres || !allProduct){
+    return null;
+  }
+     const related = allProduct.filter(
+          prod => prod.id !== product.id && prod.genres.some(genre => product.genres.includes(genre))
+          //(prod) => prod.id !== product.id && prod.genres.filter((genre) => product.genres===genre)
+     ).slice(-8);    return (
 <div className='MoviesDetailRelated '>
         <h1>Related Movies</h1>
     <div className="MoviesDetailRelatedItems">

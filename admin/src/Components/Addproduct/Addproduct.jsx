@@ -7,17 +7,29 @@ const Addproduct = () => {
         title:"",
         year:"",
         runtime:"",
+        trailer: "",
         genres: [],
         director:"",
         actors:"",
         plot:"",
-        posterUrl:""
+        posterUrl:"",
+        
     });
+    const [videoUrls, setVideoUrls] = useState({
+      video1: "",
+      video2: "",
+      video3: "",
+      video4: "",
+  });
+
     const imageHandler=(e)=>{
       setPosterUrl(e.target.files[0]);
   }
   const changeHandler=(e)=>{
       setProductDetails({...productDetails , [e.target.name]:e.target.value})
+  }
+  const changeVideoUrlHandler =(e)=>{
+    setVideoUrls({...videoUrls , [e.target.name]:e.target.value })
   }
   const [selectedGenre, setSelectedGenre] = useState("")
   const [errorMessage, setErrorMessage] = useState("");
@@ -35,10 +47,14 @@ const removeGenre = (index) => {
 
 
 const validateFields = () => {
-  const { title, year, runtime, director, actors, plot, genres } = productDetails;
-  if (!title || !year || !runtime || !director || !actors || !plot || genres.length === 0 || !posterUrl) {
+  const { title, year, runtime, trailer , director, actors, plot, genres } = productDetails;
+  if (!title || !year || !runtime || !trailer ||  !director || !actors || !plot || genres.length === 0 || !posterUrl) {
       return false;
   }
+  if (!videoUrls.video1 || !videoUrls.video2 || !videoUrls.video3 || !videoUrls.video4) {
+    return false;
+  }
+  
   return true;
 };
 
@@ -68,8 +84,18 @@ setErrorMessage(""); // Clear any existing error messages
   }).then((resp)=>resp.json()).then((data)=>{responseData=data})
 
   if(responseData.success){
-    product.posterUrl=responseData.image_url;
-    console.log(product);
+    // product.posterUrl=responseData.image_url;
+    const product = {
+      ...productDetails,
+      posterUrl: responseData.image_url,
+      videoUrl: {
+          video1: videoUrls.video1,
+          video2: videoUrls.video2,
+          video3: videoUrls.video3,
+          video4: videoUrls.video4,
+      },
+  };
+    // console.log(product);
     await fetch('http://localhost:2000/addproduct', {
       method:'POST',
       headers:{
@@ -87,11 +113,19 @@ setErrorMessage(""); // Clear any existing error messages
           title:"",
           year:"",   
           runtime:"",
+          trailer:"",
           genres: [],
           director:"",
           actors:"",
           plot:"",
+          
         });
+        setVideoUrls({
+          video1: "",
+          video2: "",
+          video3: "",
+          video4: "",
+      });
         setPosterUrl(false);
       } else{
         alert("Failed to add product");
@@ -121,6 +155,11 @@ setErrorMessage(""); // Clear any existing error messages
         <input type="number" value={productDetails.runtime} name="runtime" onChange={changeHandler}/>
 
       </div>
+      </div>
+      <div className="addproduct-itemfield">
+        <p>Trailer</p>
+        <input type="text" placeholder="https://www.youtube.com/embed/..." value={productDetails.trailer} name="trailer" onChange={changeHandler}/>
+
       </div>
       <div className="addproduct-itemfield">
                 <p>Genres</p>
@@ -169,6 +208,22 @@ setErrorMessage(""); // Clear any existing error messages
         <input type="text" value={productDetails.actors} name="actors" onChange={changeHandler}/>
 
       </div>
+      <div className="addproduct-itemfield">
+                <p>Video 1 URL</p>
+                <input type="text" value={videoUrls.video1} name="video1" onChange={changeVideoUrlHandler} />
+            </div>
+            <div className="addproduct-itemfield">
+                <p>Video 2 URL</p>
+                <input type="text" value={videoUrls.video2} name="video2" onChange={changeVideoUrlHandler} />
+            </div>
+            <div className="addproduct-itemfield">
+                <p>Video 3 URL</p>
+                <input type="text" value={videoUrls.video3} name="video3" onChange={changeVideoUrlHandler} />
+            </div>
+            <div className="addproduct-itemfield">
+                <p>Video 4 URL</p>
+                <input type="text" value={videoUrls.video4} name="video4" onChange={changeVideoUrlHandler} />
+            </div>
       <div className="addproduct-itemfield">
         <p>Plot</p>
        <textarea name="plot" value={productDetails.plot}  onChange={changeHandler}>

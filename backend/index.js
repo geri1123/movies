@@ -60,6 +60,16 @@ const Product=mongoose.model("Product" , {
         type:Number,
         required:true,
     },
+    trailer:{
+     type:String,
+     required:true,
+    },
+    videoUrl: {
+        video1: { type: String },
+        video2: { type: String },
+        video3: { type: String },
+        video4: { type: String }
+    },
     date:{
         type:Date,
         default:Date.now,
@@ -98,6 +108,14 @@ app.post('/addproduct', async (req , res)=>{
         posterUrl:req.body.posterUrl,
         genres:req.body.genres,
         year:req.body.year,
+        trailer:req.body.trailer,
+        videoUrl: {
+            video1: req.body.videoUrl.video1,
+            video2: req.body.videoUrl.video2,
+            video3: req.body.videoUrl.video3,
+            video4: req.body.videoUrl.video4,
+            // Add more fields as needed
+        },
         runtime:req.body.runtime,
 
     });

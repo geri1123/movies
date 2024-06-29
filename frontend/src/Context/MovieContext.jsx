@@ -26,19 +26,36 @@ export  const MoviesContext = createContext();
     const [loading , setLoading]=useState(true)
     const [allProduct , setAllProduct]=useState([]);
     const [CartItem , setCartItem]=useState(getDefaultCart());
-    useEffect(() =>{
-        fetch('http://localhost:2000/allproducts')
-        .then((res)=>res.json())
-        .then((data)=>{
+    // useEffect(() =>{
+    //     fetch('http://localhost:2000/allproducts')
+    //     .then((res)=>res.json())
+    //     .then((data)=>{
+    //       setAllProduct(data);
+    //       setLoading(false);
+    //     })
+    // }, []);
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch('http://localhost:2000/allproducts');
+          if (!response.ok) {
+            throw new Error('Failed to fetch data');
+          }
+          const data = await response.json();
           setAllProduct(data);
           setLoading(false);
-        })
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          // Handle error state if needed
+        }
+      };
+    
+      fetchData();
     }, []);
-
      const saveCartToLocalStorage = (cart) => {
        localStorage.setItem('cart', JSON.stringify(cart));
      };
-    const AddToCart = (itemId) => {
+    const AddToCart = async(itemId) => {
       setCartItem((prev) => {
         const newCart = { ...prev, [itemId]: prev[itemId] + 1 };
         saveCartToLocalStorage(newCart);
@@ -46,7 +63,7 @@ export  const MoviesContext = createContext();
       });
     };
   
-    const RemoveFromCart = (itemId) => {
+    const RemoveFromCart = async (itemId) => {
       setCartItem((prev) => {
         const newCart = { ...prev, [itemId]: prev[itemId] - 1 };
         saveCartToLocalStorage(newCart);

@@ -77,8 +77,11 @@ const currentPageFromUrl = parseInt(query.get('page') || '0', 10);
        
     
       </div>  
+        
         {/* Pagination */}
+        {reversedProducts.length>itemsPerPage &&(
       <ReactPaginate
+      
         pageCount={pageCount}
         pageRangeDisplayed={5}
         marginPagesDisplayed={2}
@@ -89,7 +92,7 @@ const currentPageFromUrl = parseInt(query.get('page') || '0', 10);
        
         disableInitialCallback // Disable initial pagination callback
       />
-
+)}
       {/* Manually trigger pagination change */}
   </div>
    )
