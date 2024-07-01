@@ -1,6 +1,6 @@
 .footer{
    display: flex;
-   margin-top: 20px;
+   margin-top: 30px;
    justify-content: space-around;
    flex-direction: column;
    font-family: Poppins;
@@ -33,10 +33,20 @@
     margin: 10px 10px;
     border-bottom: 1px solid aliceblue !important ;
     font-weight: 400;
+    font-size:16px ;
 }
 hr{
     color: aliceblue !important ;
 }
 .footer p{
     font-weight: 400;
+}
+@media only screen and (max-width:450px){
+    .menu h4{
+        padding:2px 8px;
+        margin: 5px 5px;
+        
+        font-size:11px ;
+    }
+    
 }

@@ -123,7 +123,11 @@ const Items = (props) => {
         }
         </p>
         <p>Actors:<span> {props.actors}</span></p>
+        <div className="watchmovie">
+        <Link to={`/MoviesDetail/${props.id}/${props.title}${props.year}`}><h3>Watch Movie</h3></Link>
       </div>
+      </div>
+     
     </div>
   );
 };

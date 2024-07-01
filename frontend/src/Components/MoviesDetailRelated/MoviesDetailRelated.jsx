@@ -18,8 +18,8 @@ const MoviesDetailRelated = ({product}) => {
     return null;
   }
      const related = allProduct.filter(
-          prod => prod.id !== product.id && prod.genres.some(genre => product.genres.includes(genre))
-          //(prod) => prod.id !== product.id && prod.genres.filter((genre) => product.genres===genre)
+        //   prod => prod.id !== product.id && prod.genres.some(genre => product.genres.includes(genre))
+          (prod) => prod.id !== product.id && prod.genres.filter((genre) => product.genres===genre)
      ).slice(-8);    return (
 <div className='MoviesDetailRelated '>
         <h1>Related Movies</h1>

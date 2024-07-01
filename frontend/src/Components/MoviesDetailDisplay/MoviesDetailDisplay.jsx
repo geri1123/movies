@@ -427,6 +427,7 @@ const MoviesDetailDisplay = (props) => {
    const handleyoutube=()=>{
     youref.current.classList.toggle('responsibleyoutube');
     document.body.style.overflow = 'hidden';
+    
    }
 const removeyoutube=()=>{
   youref.current.classList.remove('responsibleyoutube');
@@ -537,7 +538,10 @@ const removeyoutube=()=>{
                   <iframe
                     src={Object.values(product.videoUrl)[selectedServerIndex]}
                     allowFullScreen
+                    frameBorder="0"
+                      scrolling="no"
                     title={`server ${selectedServerIndex + 1}`}
+                    className="responsive-iframe" 
                    ></iframe>
            
           

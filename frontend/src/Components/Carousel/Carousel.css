@@ -1,0 +1,434 @@
+/* .carousel{
+    padding: 0 130px;
+   
+    
+    margin-bottom: 20px;
+    overflow: hidden; 
+}
+.carouselitems{
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+}
+.carouselitems::-webkit-scrollbar {
+    display: none;
+  }
+.carouselitem{
+    cursor: pointer;
+    width: 160px;
+    margin: 0 7px;
+    scroll-snap-align: center; 
+    position: relative;
+    transition: all 1s ease-in-out ;
+}
+.carouselitem img{
+    width: 160px;
+    height: 230px;
+    object-fit: cover; 
+
+}
+.playcarouselitem {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+    border-radius: 50%; 
+    transition: transform 0.6s ease, opacity 0.6s ease , background-color 0.6s ease-in-out; 
+    opacity: 0; 
+    padding: 10px;
+    background-color: transparent;
+}
+
+.carouselitem:hover .playcarouselitem{
+    transform: translate(-50%, -50%) scale(1); 
+    opacity: 1; 
+}
+
+.playcarouselitem:hover{
+    background-color: rgba(52,160, 255, 0.5);
+    opacity: 1;
+     
+}
+.faplay{
+   
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background-color: aliceblue;
+    border-radius: 40px;
+    color: rgb(52, 160, 255);
+}
+  */
+  
+  
+  
+  
+  
+ .carousel {
+    padding: 0 130px;
+    margin-bottom: 20px;
+    overflow: hidden; 
+}
+
+.carouselitems {
+    display: flex;
+    overflow: hidden;
+}
+
+.carouselitem {
+    cursor: pointer;
+    width: 160px;
+    margin: 0 7px;
+    scroll-snap-align: center; 
+    position: relative;
+}
+
+.carouselitem img {
+    width: 160px;
+    height: 230px;
+    object-fit: cover; 
+}
+
+.playcarouselitem {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; 
+    transition: transform 0.6s ease, opacity 0.6s ease, background-color 0.6s ease-in-out; 
+    opacity: 0; 
+    padding: 10px;
+    background-color: transparent;
+}
+
+.carouselitem:hover .playcarouselitem {
+    transform: translate(-50%, -50%) scale(1); 
+    opacity: 1; 
+}
+
+.playcarouselitem:hover {
+    background-color: rgba(52, 160, 255, 0.5);
+    opacity: 1;
+}
+
+.faplay {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background-color: aliceblue;
+    border-radius: 40px;
+    color: rgb(52, 160, 255);
+}
+ 
+
+ @media only screen and (max-width:1460px){
+    .carousel{
+        padding: 0px 100px;
+    }
+ }
+ @media only screen and (max-width:1390px){
+    .carousel{
+        padding: 0px 80px ;
+    }
+}
+@media only screen and (max-width:1350px){
+    .carousel{
+        padding: 0px 50px ;
+    }
+}
+@media only screen and (max-width:1250px){
+    .carousel{
+        padding: 0px 30px ;
+    }
+    .carouselitem {
+       
+        width: 150px;
+      
+    }
+    
+    .carouselitem img {
+        width: 150px;
+        height: 220px;
+       
+    }
+}
+@media only screen and (max-width:1180px){
+    .carouselitem {
+       
+        width: 145px;
+      
+    }
+    
+    .carouselitem img {
+        width: 145px;
+        height: 215px;
+       
+    }
+}
+@media only screen and (max-width:1140px){
+    .carouselitem {
+       
+        width: 140px;
+      
+    }
+    
+    .carouselitem img {
+        width: 140px;
+        height: 210px;
+       
+    }
+}
+@media only screen and (max-width:1100px){
+    .carouselitem {
+       
+        width: 135px;
+      
+    }
+    
+    .carouselitem img {
+        width: 135px;
+        height: 205px;
+       
+    }
+}
+@media only screen and (max-width:1070px){
+    .carouselitem {
+       
+        width: 130px;
+      
+    }
+    
+    .carouselitem img {
+        width: 130px;
+        height: 200px;
+       
+    }
+}
+@media only screen and (max-width:1024px){
+    .carousel{
+        padding: 0px 80px;
+    }
+    .carouselitem {
+       
+        width: 140px;
+      
+    }
+    
+    .carouselitem img {
+        width: 140px;
+        height: 210px;
+       
+    }
+}
+@media only screen and (max-width:960px){
+    .carousel{
+        padding: 0px 80px;
+    }
+    .carouselitem {
+       
+        width: 135px;
+      
+    }
+    
+    .carouselitem img {
+        width: 135px;
+        height: 205px;
+       
+    }
+}
+@media only screen and (max-width:900px){
+    .carousel{
+        padding: 0px 30px;
+    }
+    .carouselitem {
+       
+        width: 145px;
+      
+    }
+    
+    .carouselitem img {
+        width: 145px;
+        height: 215px;
+       
+    }
+}
+@media only screen and (max-width:840px){
+    
+    .carouselitem {
+       
+        width: 140px;
+      
+    }
+    
+    .carouselitem img {
+        width: 140px;
+        height: 210px;
+       
+    }
+}
+@media only screen and (max-width:800px){
+    
+    .carouselitem {
+       
+        width: 135px;
+      
+    }
+    
+    .carouselitem img {
+        width: 135px;
+        height: 205px;
+       
+    }
+}
+@media only screen and (max-width:775px){
+    
+    .carouselitem {
+       
+        width: 125px;
+      
+    }
+    
+    .carouselitem img {
+        width: 125px;
+        height: 195px;
+       
+    
+}
+}
+@media only screen and (max-width:725px){
+    
+    .carouselitem {
+       
+        width: 115px;
+      
+    }
+    
+    .carouselitem img {
+        width: 115px;
+        height: 185px;
+       
+    }
+}
+@media only screen and (max-width:675px){
+    
+    .carouselitem {
+       
+        width: 105px;
+      
+    }
+    
+    .carouselitem img {
+        width: 105px;
+        height: 175px;
+       
+    }
+}
+@media only screen and (max-width:625px){
+    
+    .carouselitem {
+       
+        width: 95px;
+      
+    }
+    
+    .carouselitem img {
+        width: 95px;
+        height: 165px;
+       
+    }
+}
+@media only screen and (max-width:625px){
+    .carousel{
+        padding: 0px 15px;
+    }
+    .carouselitem {
+       
+        width: 95px;
+      
+    }
+    
+    .carouselitem img {
+        width: 95px;
+        height: 140px;
+       
+    }
+}
+@media only screen and (max-width:555px){
+   
+    .carouselitem {
+       
+        width: 85px;
+      
+    }
+    
+    .carouselitem img {
+        width: 85px;
+        height: 125px;
+       
+    }
+}
+@media only screen and (max-width:495px){
+   
+    .carouselitem {
+       
+        width: 75px;
+      
+    }
+    
+    .carouselitem img {
+        width: 75px;
+        height: 115px;
+       
+    }
+}
+@media only screen and (max-width:447px){
+   
+    .carouselitem {
+       
+        width: 65px;
+      
+    }
+    
+    .carouselitem img {
+        width: 65px;
+        height: 105px;
+       
+    }
+}
+@media only screen and (max-width:390px){
+   
+    .carouselitem {
+       
+        width: 60px;
+      
+    }
+    
+    .carouselitem img {
+        width: 60px;
+        height: 95px;
+       
+    }
+}
+@media only screen and (max-width:367px){
+   
+    .carouselitem {
+       
+        width: 55px;
+      
+    }
+    
+    .carouselitem img {
+        width: 55px;
+        height: 90px;
+       
+    }
+}

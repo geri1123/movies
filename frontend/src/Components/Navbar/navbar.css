@@ -9,7 +9,7 @@
    
     padding: 0px 130px;
     font-family: Poppins;
-   margin-bottom: 30px;
+   margin-bottom: 10px;
 
 }
 .nav-logo h1{
@@ -286,7 +286,7 @@
     }
     .navbar{
         padding: 10px 10px;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
     .navul a{
         font-size: 40px;
