@@ -59,7 +59,7 @@ const currentPageFromUrl = parseInt(query.get('page') || '0', 10);
 
   return (
     <div className='moviehomepage'>
-    <h5>Ju keni {length} rezultate nga {name}</h5>
+    <h5>You have {length} results from {name}</h5>
     {loading && <div className='loading'><GridLoader color="#36d7b7" /></div>}
       <div className="movies">
       

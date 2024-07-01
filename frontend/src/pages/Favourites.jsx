@@ -12,7 +12,7 @@ const Favourites = () => {
   
   return (
     <div className='moviehomepage'>
-      <h5>Ju keni {getTotalCartItem() } filma ne Favorit</h5>
+      <h5> {getTotalCartItem() } Movies in Favourite</h5>
       {loading && <div className='loading'><GridLoader color="#36d7b7"/></div>}
       <div className='movies'>
         

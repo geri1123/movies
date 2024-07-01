@@ -52,7 +52,7 @@ const handlePageChange = ({ selected }) => {
 <div className="Moviescategory">
   <h2>Movies</h2>
   <div className="imdb">
-    <p><Link to='/'>te fundit</Link></p>
+    <p><Link to='/'>Newest</Link></p>
   <p onClick={()=>setMenu("azh")}> <Link to="/azh">a-zh</Link> {menu==="azh"? <hr/>:<></>} </p>
    <p><Link to="/trending">trending</Link></p>
   </div>

@@ -58,7 +58,7 @@ const currentPageFromUrl = parseInt(query.get('page') || '0', 10);
       <div className="Moviescategory">
         <h2>Movies</h2>
         <div className="imdb">
-          <p onClick={()=>setMenu('home')}><Link to='/'>te fundit { menu==="home" ? <hr/>: <></>}</Link></p>
+          <p onClick={()=>setMenu('home')}><Link to='/'>Newest { menu==="home" ? <hr/>: <></>}</Link></p>
          <p ><Link to="/azh">a-zh</Link></p> 
          <p ><Link to="/trending">trending</Link></p>
         </div>

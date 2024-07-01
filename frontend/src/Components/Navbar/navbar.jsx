@@ -93,7 +93,7 @@ const Navbar = () => {
                   <Link to="#" onClick={ handleremovedropdown }>
                     <FaRegCircle style={{marginRight:"5px"}}/>
                  
-                     Zhanre 
+                     Genres
                      <MdArrowDropDown />
                  </Link> 
                 
