@@ -1,6 +1,10 @@
 services:
   - type: web
-    name: my-react-app
-    env: static
-    buildCommand: npm install && npm run build
-    staticPublishPath: build
+    name: my-express-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: PORT
+        value: 2000
